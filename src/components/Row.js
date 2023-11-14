@@ -37,9 +37,9 @@ function Row({ title, fetchUrl, isLarge }) {
         let distance = listRef.current.getBoundingClientRect().x - 60;
         if (direction === 'left' && slideNum > 0) {
             setIsMovedRight(false);
-            if (slideNum > 10) {
-                setSlideNum(slideNum - 5);
+            if (slideNum === 10) {
                 listRef.current.style.transform = `translateX(${1140 + distance}px)`;
+                setSlideNum(slideNum - 5);
             } else {
                 setIsMovedLeft(false);
                 setSlideNum(slideNum - 5);
@@ -49,12 +49,12 @@ function Row({ title, fetchUrl, isLarge }) {
         if (direction === 'right' && slideNum < 10) {
             setIsMovedLeft(true);
             if (slideNum < 5) {
-                setSlideNum(slideNum + 5);
                 listRef.current.style.transform = `translateX(${-1330 + distance}px)`;
+                setSlideNum(slideNum + 5);
             } else {
                 setIsMovedRight(true);
-                setSlideNum(slideNum + 5);
                 listRef.current.style.transform = `translateX(${-1140 + distance}px)`;
+                setSlideNum(slideNum + 5);
             }
         }
     };
@@ -72,7 +72,7 @@ function Row({ title, fetchUrl, isLarge }) {
                 {!movies.loading
                     ? movies.data.map((movie) => (
                           <React.Fragment key={movie.id}>
-                              <MoviePoster baseUrl={baseUrl} isLarge={isLarge} movie={movie} />
+                              <MoviePoster baseUrl={baseUrl} movie={movie} />
                           </React.Fragment>
                       ))
                     : [1, 2, 3, 4, 5, 6].map((n) => <SkeletonPoster key={n} />)}

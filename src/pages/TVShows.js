@@ -17,10 +17,10 @@ function TvShows({ title }) {
                     fetchCategories={requests.fetchTVShowGenres}
                     type="tvShows"
                 />
-                <Row title="TV Shows Original" fetchUrl={requests.fetchNetflixOriginals} isLarge />
-                <Row title="TV Shows Action" fetchUrl={requests.fetchTVAction} isLarge />
-                <Row title="TV Shows Animation" fetchUrl={requests.fetchTVAnimation} isLarge />
-                <Row title="TV Shows Comedy" fetchUrl={requests.fetchTVComedy} isLarge />
+                <Row title="TV Shows Original" fetchUrl={requests.fetchNetflixOriginals} />
+                <Row title="TV Shows Action" fetchUrl={requests.fetchTVAction} />
+                <Row title="TV Shows Animation" fetchUrl={requests.fetchTVAnimation} />
+                <Row title="TV Shows Comedy" fetchUrl={requests.fetchTVComedy} />
             </div>
         </AnimatedPage>
     );

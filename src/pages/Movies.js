@@ -17,11 +17,11 @@ function Movies({ title }) {
                     fetchCategories={requests.fetchMoviesGenres}
                     type={'movies'}
                 />
-                <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} isLarge />
-                <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} isLarge />
-                <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} isLarge />
-                <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} isLarge />
-                <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} isLarge />
+                <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} />
+                <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
+                <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
+                <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
+                <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
             </div>
         </AnimatedPage>
     );
