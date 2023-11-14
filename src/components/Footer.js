@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { memo } from 'react';
 import '../CSS/Footer.css';
+import FacebookRoundedIcon from '@mui/icons-material/FacebookRounded';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import TwitterIcon from '@mui/icons-material/Twitter';
 
 function Footer() {
     const links = [
-        'Audio and Subtiles',
+        'Audio and Subtile',
         'Audio Description',
         'Help Center',
         'Gift Cards',
@@ -21,10 +25,42 @@ function Footer() {
     return (
         <div className="footer-container">
             <div className="footer-socialLink">
-                <i className="fab fa-facebook-f link"></i>
-                <i className="fab fa-instagram link"></i>
-                <i className="fab fa-twitter link"></i>
-                <i className="fab fa-youtube link"></i>
+                <FacebookRoundedIcon
+                    sx={{
+                        marginLeft: '1.6vw',
+                        color: '#fff',
+                        marginRight: '0.6vw',
+                        cursor: 'pointer',
+                        fontSize: '1.8vw',
+                    }}
+                />
+                <InstagramIcon
+                    sx={{
+                        marginLeft: '1.6vw',
+                        color: '#fff',
+                        marginRight: '0.6vw',
+                        cursor: 'pointer',
+                        fontSize: '1.8vw',
+                    }}
+                />
+                <TwitterIcon
+                    sx={{
+                        marginLeft: '1.6vw',
+                        color: '#fff',
+                        marginRight: '0.6vw',
+                        cursor: 'pointer',
+                        fontSize: '1.8vw',
+                    }}
+                />
+                <YouTubeIcon
+                    sx={{
+                        marginLeft: '1.6vw',
+                        color: '#fff',
+                        marginRight: '0.6vw',
+                        cursor: 'pointer',
+                        fontSize: '1.8vw',
+                    }}
+                />
             </div>
 
             <div className="footer-content">
@@ -42,4 +78,4 @@ function Footer() {
     );
 }
 
-export default Footer;
+export default memo(Footer);

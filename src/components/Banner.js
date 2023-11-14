@@ -1,12 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, memo } from 'react';
 import axios from '../axios';
 import '../CSS/Banner.css';
+import PlayArrowRoundedIcon from '@mui/icons-material/PlayArrowRounded';
+import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
 
 const baseUrl = 'https://image.tmdb.org/t/p/w500/';
 
-function Banner({ fetchBannerData }) {
+function Banner({ fetchBannerData, type, fetchCategories }) {
     const [movie, setMovie] = useState([]);
+    const [categories, setCategories] = useState([]);
 
     useEffect(() => {
         async function fetchData() {
@@ -16,7 +19,16 @@ function Banner({ fetchBannerData }) {
             return request;
         }
         fetchData();
-    }, []);
+    }, [fetchBannerData]);
+
+    useEffect(() => {
+        async function fetchData() {
+            const requestCate = await axios.get(fetchCategories);
+            setCategories(requestCate.data.genres);
+            return requestCate;
+        }
+        fetchData();
+    }, [fetchCategories]);
 
     // console.log(movie);
     function truncate(str, n) {
@@ -34,6 +46,20 @@ function Banner({ fetchBannerData }) {
         >
             <div className="banner_left_cover"></div>
             <div className="banner_bottom_cover"></div>
+            {type && (
+                <div className="banner_categories">
+                    <span>{type === 'tvShows' ? 'TV Shows' : 'Movies'}</span>
+                    <select name="genres" id="genres">
+                        <option style={{ display: 'none' }}>Genres</option>
+                        {categories &&
+                            categories.map((category) => (
+                                <option key={category.id} value={category.name}>
+                                    {category.name}
+                                </option>
+                            ))}
+                    </select>
+                </div>
+            )}
             <div className="banner_content">
                 <h1 className="banner_title">
                     {/* check if api return has title or not and so on */}
@@ -42,10 +68,12 @@ function Banner({ fetchBannerData }) {
                 <div className="banner_description">{truncate(movie?.overview, 150)}</div>
                 <div className="banner_btns">
                     <button className="banner_btn play_btn">
-                        <i className="fas fa-play"></i>Play
+                        <PlayArrowRoundedIcon sx={{ marginRight: '10px', fontSize: '1.8em' }} />
+                        <span>Play</span>
                     </button>
                     <button className="banner_btn info_btn">
-                        <i className="fas fa-info-circle"></i>More Info
+                        <InfoOutlinedIcon sx={{ marginRight: '10px', fontSize: '1.5em' }} />
+                        <span>More Info</span>
                     </button>
                 </div>
             </div>
@@ -53,4 +81,4 @@ function Banner({ fetchBannerData }) {
     );
 }
 
-export default Banner;
+export default memo(Banner);

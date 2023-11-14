@@ -12,12 +12,16 @@ function Movies({ title }) {
     return (
         <AnimatedPage>
             <div>
-                <Banner fetchBannerData={requests.fetchActionMovies} />
-                <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} />
-                <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} />
-                <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} />
-                <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} />
-                <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} />
+                <Banner
+                    fetchBannerData={requests.fetchActionMovies}
+                    fetchCategories={requests.fetchMoviesGenres}
+                    type={'movies'}
+                />
+                <Row title="Top Rated Movies" fetchUrl={requests.fetchTopRated} isLarge />
+                <Row title="Action Movies" fetchUrl={requests.fetchActionMovies} isLarge />
+                <Row title="Comedy Movies" fetchUrl={requests.fetchComedyMovies} isLarge />
+                <Row title="Horror Movies" fetchUrl={requests.fetchHorrorMovies} isLarge />
+                <Row title="Romance Movies" fetchUrl={requests.fetchRomanceMovies} isLarge />
             </div>
         </AnimatedPage>
     );
